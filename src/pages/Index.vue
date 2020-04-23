@@ -37,13 +37,16 @@
     </div>
     <div class="row q-gutter-xs">
       <q-card class="my-card tarjeta col-6" v-for="item in arrayMostrar" :key="item.imbdID">
-        <img :src="item.Poster" class="poster" />
+        <img :src="'https://image.tmdb.org/t/p/original'+item.poster_path" class="poster" />
 
         <q-card-section>
-          <div class="titulo">{{item.Title}}</div>
-          <div class="anio">{{item.Year}}</div>
+          <div v-if="elige=='series'" class="titulo">{{item.name}}</div>
+          <div v-else class="titulo">{{item.title}}</div>
+          <!-- fecha -->
+          <div class="anio">{{item.release_date}}</div>
         </q-card-section>
       </q-card>
+      {{arrayMostrar}}
     </div>
   </q-page>
 </template>
@@ -65,31 +68,40 @@ export default {
   },
   methods: {
     loadData() {
+      var strElige
+      if (this.elige=='pelis'){
+        strElige='movie'
+      } else if (this.elige=='series') {
+        strElige='tv'
+      }
       this.$axios
         .get(
-          "http://www.omdbapi.com/?apikey=6065e9e4&s=" + String(this.busqueda)
+          "https://api.themoviedb.org/3/search/"+strElige+"?api_key=e1709d76aee13987e8728624138465aa&language=es-ES&query=" +
+            String(this.busqueda)
         )
         .then(response => {
-          console.log(response.data.Search);
-          var arraySeries = [];
-          var arrayPelis = [];
-          response.data.Search.forEach(element => {
-            if (element.Type == "series") {
-              arraySeries.push(element);
-            }
-            if (element.Type == "movie") {
-              arrayPelis.push(element);
-            }
-            if (this.elige == "series") {
-              this.arrayMostrar = arraySeries;
-            } else if (this.elige == "pelis") {
-              this.arrayMostrar = arrayPelis;
+          console.log(response.data.results);
+          this.arrayMostrar = [];
+          response.data.results.forEach(element => {
+            if (element.poster_path != null) {
+              this.arrayMostrar.push(element);
             }
           });
         })
         .catch(e => {
           console.log(e);
         });
+      this.arrayMostrar.sort(function(a, b) {
+        //ordenar
+        if (a.popularity > b.popularity) {
+          return 1;
+        }
+        if (a.popularity < b.popularity) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
     },
     buscaSeries() {
       this.elige = "series";
