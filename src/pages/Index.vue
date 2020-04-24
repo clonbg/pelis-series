@@ -36,15 +36,25 @@
       </div>
     </div>
     <div class="row q-gutter-xs">
-      <q-card class="my-card tarjeta col-6" v-for="item in arrayMostrar" :key="item.imbdID">
-        <img :src="'https://image.tmdb.org/t/p/original'+item.poster_path" class="poster" />
+      <q-card class="my-card tarjeta col-6" v-for="(item, index) in arrayMostrar" :key="index">
+        <img :src="'https://image.tmdb.org/t/p/original'+item.poster" class="poster" />
 
         <q-card-section>
-          <div v-if="elige=='series'" class="titulo">{{item.name}}</div>
-          <div v-else class="titulo">{{item.title}}</div>
-          <!-- fecha -->
-          <div class="anio">{{item.release_date}}</div>
+          <div class="titulo">{{item.titulo}}</div>
+          <div class="anio">{{item.anio}}</div>
         </q-card-section>
+        <Vspace/>
+        <q-separator></q-separator>
+        <footer  class="vertical-bottom">
+          <q-card-actions>
+            <q-btn-group push>
+              <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
+              <q-btn push label="Castellano" icon="img:statics/icons/spain.svg" />
+              <q-btn push label="Inglés" icon="img:statics/icons/ingles.svg" />
+              <q-btn push label="Subtítulos" icon="subject" />
+            </q-btn-group>
+          </q-card-actions>
+        </footer>
       </q-card>
       {{arrayMostrar}}
     </div>
@@ -68,15 +78,17 @@ export default {
   },
   methods: {
     loadData() {
-      var strElige
-      if (this.elige=='pelis'){
-        strElige='movie'
-      } else if (this.elige=='series') {
-        strElige='tv'
+      var strElige;
+      if (this.elige == "pelis") {
+        strElige = "movie";
+      } else if (this.elige == "series") {
+        strElige = "tv";
       }
       this.$axios
         .get(
-          "https://api.themoviedb.org/3/search/"+strElige+"?api_key=e1709d76aee13987e8728624138465aa&language=es-ES&query=" +
+          "https://api.themoviedb.org/3/search/" +
+            strElige +
+            "?api_key=e1709d76aee13987e8728624138465aa&language=es-ES&query=" +
             String(this.busqueda)
         )
         .then(response => {
@@ -84,7 +96,33 @@ export default {
           this.arrayMostrar = [];
           response.data.results.forEach(element => {
             if (element.poster_path != null) {
-              this.arrayMostrar.push(element);
+              if (strElige == "movie") {
+                var fecha = element.release_date;
+                fecha = fecha
+                  .split("-")
+                  .reverse()
+                  .join("-");
+                var item = {
+                  titulo: element.title,
+                  anio: fecha,
+                  poster: element.poster_path
+                };
+              }
+              if (strElige == "tv") {
+                var fecha = element.first_air_date;
+                fecha = fecha
+                  .split("-")
+                  .reverse()
+                  .join("-");
+                var item = {
+                  titulo: element.name,
+                  anio: fecha,
+                  poster: element.poster_path
+                };
+              }
+              console.log(item);
+
+              this.arrayMostrar.push(item);
             }
           });
         })
@@ -130,7 +168,7 @@ export default {
   margin-top: 20px;
 }
 .tarjeta {
-  display: inline;
+  display: inline-block;
   max-width: 40%;
   margin: 0 auto;
   margin-top: 5%;
@@ -140,5 +178,9 @@ export default {
 }
 .anio {
   font-size: 2vw;
+}
+.vertical-bottom{
+  margin-bottom: 0;
+  padding-bottom:0
 }
 </style>
