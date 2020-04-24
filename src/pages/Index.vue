@@ -36,25 +36,32 @@
       </div>
     </div>
     <div class="row q-gutter-xs">
-      <q-card class="my-card tarjeta col-6" v-for="(item, index) in arrayMostrar" :key="index">
+      <q-card
+        class="card my-card tarjeta col-6 flex"
+        v-for="(item, index) in arrayMostrar"
+        :key="index"
+      >
         <img :src="'https://image.tmdb.org/t/p/original'+item.poster" class="poster" />
 
-        <q-card-section>
+        <q-card-section class="block">
           <div class="titulo">{{item.titulo}}</div>
           <div class="anio">{{item.anio}}</div>
         </q-card-section>
-        <Vspace/>
-        <q-separator></q-separator>
-        <footer  class="vertical-bottom">
-          <q-card-actions>
-            <q-btn-group push>
-              <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
-              <q-btn push label="Castellano" icon="img:statics/icons/spain.svg" />
-              <q-btn push label="Inglés" icon="img:statics/icons/ingles.svg" />
-              <q-btn push label="Subtítulos" icon="subject" />
-            </q-btn-group>
-          </q-card-actions>
-        </footer>
+
+        <q-separator spaced inset vertical dark />
+        <q-btn-group push class="footer">
+          <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
+          <q-btn
+            push
+            type="a"
+            :href="'https://www.elitetorrent.nl/peliculas/'+item.titulo.toLowerCase().split(' ').join('-')+' '"
+            label="Castellano"
+            icon="img:statics/icons/spain.svg"
+            target="_blank"
+          />
+          <q-btn push label="Inglés" icon="img:statics/icons/ingles.svg" />
+          <q-btn push label="Subtítulos" icon="subject" />
+        </q-btn-group>
       </q-card>
       {{arrayMostrar}}
     </div>
@@ -179,8 +186,15 @@ export default {
 .anio {
   font-size: 2vw;
 }
-.vertical-bottom{
-  margin-bottom: 0;
-  padding-bottom:0
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  text-align: center;
+}
+.block {
+  padding-bottom: 45px;
 }
 </style>
