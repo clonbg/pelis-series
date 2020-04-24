@@ -54,13 +54,27 @@
           <q-btn
             push
             type="a"
-            :href="'https://www.elitetorrent.nl/peliculas/'+item.titulo.toLowerCase().split(' ').join('-')+' '"
+            :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
             label="Castellano"
             icon="img:statics/icons/spain.svg"
             target="_blank"
           />
-          <q-btn push label="Inglés" icon="img:statics/icons/ingles.svg" />
-          <q-btn push label="Subtítulos" icon="subject" />
+          <q-btn
+            push
+            type="a"
+            :href="'https://wsmmirror.info/Movies/'+item.titulo.toLowerCase().split(' ').join('-')+' '"
+            label="Inglés"
+            icon="img:statics/icons/ingles.svg"
+            target="_blank"
+          />
+          <q-btn
+            push
+            type="a"
+            :href="'http://www.subswiki.com/search.php?search='+item.titulo.toLowerCase().split(' ').join('+')"
+            label="Subtítulos"
+            icon="subject"
+            target="_blank"
+          />
         </q-btn-group>
       </q-card>
       {{arrayMostrar}}
