@@ -35,12 +35,9 @@
         />
       </div>
     </div>
+
     <div class="row q-gutter-xs">
-      <q-card
-        class="card my-card tarjeta col-6 flex"
-        v-for="(item, index) in arrayMostrar"
-        :key="index"
-      >
+      <q-card class="tarjeta" v-for="(item, index) in arrayMostrar" :key="index">
         <img :src="'https://image.tmdb.org/t/p/original'+item.poster" class="poster" />
 
         <q-card-section class="block">
@@ -49,7 +46,7 @@
         </q-card-section>
 
         <q-separator spaced inset vertical dark />
-        <q-btn-group push class="footer">
+        <q-btn-group spread class="footer">
           <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
           <q-btn
             push
@@ -58,26 +55,28 @@
             label="Castellano"
             icon="img:statics/icons/spain.svg"
             target="_blank"
+            class="letra"
           />
           <q-btn
             push
             type="a"
-            :href="'https://wsmmirror.info/Movies/'+item.titulo.toLowerCase().split(' ').join('-')+' '"
+            :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
             label="Inglés"
             icon="img:statics/icons/ingles.svg"
             target="_blank"
+            class="letra"
           />
           <q-btn
             push
             type="a"
-            :href="'http://www.subswiki.com/search.php?search='+item.titulo.toLowerCase().split(' ').join('+')"
+            :href="'http://www.subswiki.com/search.php?search='+item.nombre_original.toLowerCase().split(' ').join('+')"
             label="Subtítulos"
             icon="subject"
             target="_blank"
+            class="letra"
           />
         </q-btn-group>
       </q-card>
-      {{arrayMostrar}}
     </div>
   </q-page>
 </template>
@@ -126,7 +125,8 @@ export default {
                 var item = {
                   titulo: element.title,
                   anio: fecha,
-                  poster: element.poster_path
+                  poster: element.poster_path,
+                  nombre_original: element.original_title
                 };
               }
               if (strElige == "tv") {
@@ -138,7 +138,8 @@ export default {
                 var item = {
                   titulo: element.name,
                   anio: fecha,
-                  poster: element.poster_path
+                  poster: element.poster_path,
+                  nombre_original: element.original_name
                 };
               }
               console.log(item);
@@ -189,16 +190,17 @@ export default {
   margin-top: 20px;
 }
 .tarjeta {
-  display: inline-block;
-  max-width: 40%;
+  display: grid;
+  width: 40vw;
+  min-width: 200px;
   margin: 0 auto;
   margin-top: 5%;
 }
 .titulo {
-  font-size: 2.5vw;
+  font-size: 3vw;
 }
 .anio {
-  font-size: 2vw;
+  font-size: 3vw;
 }
 .footer {
   position: absolute;
@@ -207,8 +209,16 @@ export default {
   width: 100%;
   color: black;
   text-align: center;
+  font-size: 2vw;
 }
 .block {
-  padding-bottom: 45px;
+  padding-bottom: 5vw;
+}
+.letra {
+  font-size: 2vw;
+}
+.color {
+  background-color: green;
+  min-width: 400px;
 }
 </style>
