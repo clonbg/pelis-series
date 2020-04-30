@@ -174,15 +174,18 @@
 </script>
 
 <style lang="scss" scoped>
+body{
+  margin: 0 0 0 0
+}
 
   .row > div {
-    padding: 10px 15px;
+    padding: 10px 10px;
   }
   .row + .row {
     margin-top: 1rem;
   }
   .margen {
-    margin: 5%;
+    margin: 0;
   }
   .claseInput {
     padding: 40px;
