@@ -37,7 +37,7 @@
     </div>
 
     <div class="row q-gutter-xs">
-      <q-card class="tarjeta" v-for="(item, index) in arrayMostrar" :key="index">
+      <q-card class="tarjeta col-12 col-sm-6" v-for="(item, index) in arrayMostrar" :key="index">
         <img :src="'https://image.tmdb.org/t/p/original'+item.poster" class="poster" />
 
         <q-card-section class="block">
@@ -190,11 +190,8 @@ export default {
   margin-top: 20px;
 }
 .tarjeta {
-  display: grid;
-  width: 40vw;
-  min-width: 200px;
+  display: inline;
   margin: 0 auto;
-  margin-top: 5%;
 }
 .titulo {
   font-size: 3vw;
