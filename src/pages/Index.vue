@@ -32,7 +32,7 @@
     </div>
 
     <div class="row q-gutter-xs">
-      <q-card v-if="arrayMostrar.length>0" class="tarjeta col-12 col-sm-6" v-for="(item, index) in arrayMostrar" :key="index">
+      <q-card v-if="arrayMostrar.length>0" class="tarjeta col-12 col-sm-5" v-for="(item, index) in arrayMostrar" :key="index">
         <img :src="'https://image.tmdb.org/t/p/original'+item.poster" class="poster" />
 
         <q-card-section class="block">
@@ -49,21 +49,24 @@
                  label="Castellano"
                  icon="img:statics/icons/spain.svg"
                  target="_blank"
-                 class="letra" />
+                 class="letra"
+                 stack/>
           <q-btn push
                  type="a"
                  :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
                  label="Inglés"
                  icon="img:statics/icons/ingles.svg"
                  target="_blank"
-                 class="letra" />
+                 class="letra"
+                 stack />
           <q-btn push
                  type="a"
                  :href="'http://www.subswiki.com/search.php?search='+item.nombre_original.toLowerCase().split(' ').join('+')"
                  label="Subtítulos"
                  icon="subject"
                  target="_blank"
-                 class="letra" />
+                 class="letra"
+                 stack/>
         </q-btn-group>
       </q-card>
       <q-icon class="logo" v-show="arrayMostrar.length==0" name="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" />
@@ -188,6 +191,7 @@
   .tarjeta {
     display: inline;
     margin: 0 auto;
+    margin-top: 5%;
   }
   .titulo {
     font-size: 3vw;
@@ -208,7 +212,7 @@
     padding-bottom: 5vw;
   }
   .letra {
-    font-size: 2vw;
+    font-size: 1.6vw;
   }
   .color {
     background-color: green;
