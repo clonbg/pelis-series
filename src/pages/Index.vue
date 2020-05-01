@@ -32,7 +32,7 @@
     </div>
 
     <div class="row q-gutter-xs">
-      <q-card v-if="arrayMostrar.length>0" class="tarjeta col-12 col-sm-5" v-for="(item, index) in arrayMostrar" :key="index">
+      <q-card v-if="arrayMostrar.length>0" class="tarjeta col-10 col-sm-5" v-for="(item, index) in arrayMostrar" :key="index">
         <img :src="'https://image.tmdb.org/t/p/original'+item.poster" class="poster" />
 
         <q-card-section class="block">
@@ -209,13 +209,14 @@ body{
     width: 100%;
     color: black;
     text-align: center;
-    font-size: 2vw;
+    font-size: 60%;
   }
   .block {
     padding-bottom: 5vw;
   }
   .letra {
-    font-size: 1.6vw;
+    font-size: 100%;
+    margin: 0 auto
   }
   .color {
     background-color: green;
