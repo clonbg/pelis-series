@@ -68,7 +68,11 @@
                  stack/>
         </q-btn-group>
       </q-card>
-      <q-icon class="logo" v-show="arrayMostrar.length==0" name="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" />
+      <div v-show="arrayMostrar.length==0" class="divSin">
+        <q-icon name="img:statics/icons/vacio.svg" class="logo" size="xl"/>
+        <h6>Sin resultados</h6>
+      </div>
+
     </div>
   </q-page>
 
@@ -173,9 +177,10 @@
 </script>
 
 <style lang="scss" scoped>
-body{
-  margin: 0 0 0 0
-}
+
+  body {
+    margin: 0 0 0 0;
+  }
 
   .row > div {
     padding: 10px 10px;
@@ -196,10 +201,10 @@ body{
     margin-top: 5%;
   }
   .titulo {
-    font-size: 3vW;
+    font-size: 3vw;
   }
   .anio {
-    font-size: 3vW;
+    font-size: 3vw;
   }
   .footer {
     position: absolute;
@@ -209,18 +214,26 @@ body{
     width: 100%;
     color: black;
     text-align: center;
-    font-size: 2vW;
+    font-size: 2vw;
   }
   .block {
-    padding-bottom: 5vW;
+    padding-bottom: 5vw;
   }
   .letra {
     font-size: 70%;
-    margin: 0 auto
+    margin: 0 auto;
   }
   .color {
     background-color: green;
     min-width: 400px;
+  }
+  .divSin {
+    margin: 0 auto;
+  }
+  .logo {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 100px;
   }
 
 </style>
