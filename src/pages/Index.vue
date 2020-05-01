@@ -39,7 +39,6 @@
           <div class="titulo">{{item.titulo}}</div>
           <div class="anio">{{item.anio}}</div>
         </q-card-section>
-
         <q-separator spaced inset vertical dark />
         <q-btn-group spread class="footer">
           <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
@@ -197,25 +196,26 @@ body{
     margin-top: 5%;
   }
   .titulo {
-    font-size: 3vw;
+    font-size: 3vW;
   }
   .anio {
-    font-size: 3vw;
+    font-size: 3vW;
   }
   .footer {
     position: absolute;
     left: 0;
+    right: 0;
     bottom: 0;
     width: 100%;
     color: black;
     text-align: center;
-    font-size: 60%;
+    font-size: 2vW;
   }
   .block {
-    padding-bottom: 5vw;
+    padding-bottom: 5vW;
   }
   .letra {
-    font-size: 100%;
+    font-size: 70%;
     margin: 0 auto
   }
   .color {
