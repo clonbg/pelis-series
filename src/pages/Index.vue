@@ -6,6 +6,7 @@
              label="Busqueda"
              value="pelis"
              @change="loadData"
+             @keyup.enter="loadData"
              @click="busqueda=null"
              class="claseInput" />
     <div class="row">
@@ -37,7 +38,10 @@
 
         <q-card-section class="block">
           <div class="titulo">{{item.titulo}}</div>
-          <div class="anio">{{item.anio}}</div>
+          <div>
+            <strong class="anio">{{item.anio}}</strong>
+            <strong class="valor">{{item.popularidad}}</strong>
+          </div>
         </q-card-section>
         <q-separator spaced inset vertical dark />
         <q-btn-group spread class="footer">
@@ -46,7 +50,7 @@
                  type="a"
                  :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
                  label="Castellano"
-                 icon="img:statics/icons/spain.svg"
+                 icon="img:statics/icons/spain.png"
                  target="_blank"
                  class="letra"
                  stack/>
@@ -54,7 +58,7 @@
                  type="a"
                  :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
                  label="Inglés"
-                 icon="img:statics/icons/ingles.svg"
+                 icon="img:statics/icons/ingles.png"
                  target="_blank"
                  class="letra"
                  stack />
@@ -69,7 +73,7 @@
         </q-btn-group>
       </q-card>
       <div v-show="arrayMostrar.length==0" class="divSin">
-        <q-icon name="img:statics/icons/vacio.svg" class="logo" size="xl"/>
+        <q-icon name="img:statics/icons/vacio.png" class="logo" size="xl" />
         <h6>Sin resultados</h6>
       </div>
 
@@ -128,7 +132,8 @@
                       titulo: element.title,
                       anio: fecha,
                       poster: element.poster_path,
-                      nombre_original: element.original_title
+                      nombre_original: element.original_title,
+                      popularidad: parseFloat(element.popularity)
                     }
                   }
                   if (strElige == 'tv') {
@@ -143,24 +148,25 @@
                       nombre_original: element.original_name
                     }
                   }
+                  console.log(item)
                   this.arrayMostrar.push(item)
                 }
+                this.arrayMostrar.sort(function(a, b) {
+                  //ordenar
+                  if (a.popularidad < b.popularidad) {
+                    return 1
+                  }
+                  if (a.popularidad > b.popularidad) {
+                    return -1
+                  }
+                  // a must be equal to b
+                  return 0
+                })
               })
             })
             .catch(e => {
               console.log(e)
             })
-          this.arrayMostrar.sort(function(a, b) {
-            //ordenar
-            if (a.popularity > b.popularity) {
-              return 1
-            }
-            if (a.popularity < b.popularity) {
-              return -1
-            }
-            // a must be equal to b
-            return 0
-          })
         }
       },
       buscaSeries() {
@@ -235,5 +241,12 @@
     margin: 0 auto;
     margin-top: 100px;
   }
+  .valor{
+    display: inline;
+    float:right;
+    font-size: 2vW;
+    margin-top: 1vH
+  }
+
 
 </style>
