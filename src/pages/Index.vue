@@ -40,7 +40,9 @@
           <div class="titulo">{{item.titulo}}</div>
           <div>
             <strong class="anio">{{item.anio}}</strong>
-            <strong class="valor">{{item.popularidad}}</strong>
+            <strong class="valor"><span class="material-icons">
+thumb_up_alt
+</span>{{item.popularidad}}</strong>
           </div>
         </q-card-section>
         <q-separator spaced inset vertical dark />
@@ -207,10 +209,10 @@
     margin-top: 5%;
   }
   .titulo {
-    font-size: 3vw;
+    font-size: 3vW;
   }
   .anio {
-    font-size: 3vw;
+    font-size: 2vW;
   }
   .footer {
     position: absolute;
@@ -245,7 +247,7 @@
     display: inline;
     float:right;
     font-size: 2vW;
-    margin-top: 1vH
+    margin-top: 0.5vW
   }
 
 
