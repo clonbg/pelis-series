@@ -40,39 +40,53 @@
           <div class="titulo">{{item.titulo}}</div>
           <div>
             <strong class="anio">{{item.anio}}</strong>
-            <strong class="valor"><span class="material-icons">
-thumb_up_alt
-</span>{{item.popularidad}}</strong>
+            <strong class="valor">
+                        <span class="material-icons">
+                          thumb_up_alt
+                        </span> {{item.popularidad}}
+                      </strong>
           </div>
         </q-card-section>
         <q-separator spaced inset vertical dark />
-        <q-btn-group spread class="footer">
-          <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
-          <q-btn push
-                 type="a"
-                 :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
-                 label="Castellano"
-                 icon="img:statics/icons/spain.png"
-                 target="_blank"
-                 class="letra"
-                 stack/>
-          <q-btn push
-                 type="a"
-                 :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
-                 label="Inglés"
-                 icon="img:statics/icons/ingles.png"
-                 target="_blank"
-                 class="letra"
-                 stack />
-          <q-btn push
-                 type="a"
-                 :href="'http://www.subswiki.com/search.php?search='+item.nombre_original.toLowerCase().split(' ').join('+')"
-                 label="Subtítulos"
-                 icon="subject"
-                 target="_blank"
-                 class="letra"
-                 stack/>
-        </q-btn-group>
+        <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
+        <div class="footer row">
+          <div class="col-12">
+
+            <q-btn push
+                   type="a"
+                   :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
+                   label="Castellano"
+                   icon="img:statics/icons/spain.png"
+                   target="_blank"
+                   class="letra col-3"
+                   stack/>
+            <q-btn push
+                   type="a"
+                   :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
+                   label="Inglés"
+                   icon="img:statics/icons/ingles.png"
+                   target="_blank"
+                   class="letra col-3"
+                   stack />
+            <q-btn push
+                   type="a"
+                   :href="'http://www.subswiki.com/search.php?search='+item.nombre_original.toLowerCase().split(' ').join('+')"
+                   label="Subtítulos"
+                   icon="subject"
+                   target="_blank"
+                   class="letra col-3"
+                   stack/>
+            <q-btn push
+                   type="a"
+                   :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
+                   label="Filmaffinity"
+                   icon="img:statics/icons/film.png"
+                   target="_blank"
+                   class="letra col-3"
+                   stack/>
+          </div>
+
+        </div>
       </q-card>
       <div v-show="arrayMostrar.length==0" class="divSin">
         <q-icon name="img:statics/icons/vacio.png" class="logo" size="xl" />
@@ -147,7 +161,8 @@ thumb_up_alt
                       titulo: element.name,
                       anio: fecha,
                       poster: element.poster_path,
-                      nombre_original: element.original_name
+                      nombre_original: element.original_name,
+                      popularidad: parseFloat(element.popularity)
                     }
                   }
                   console.log(item)
@@ -209,26 +224,20 @@ thumb_up_alt
     margin-top: 5%;
   }
   .titulo {
-    font-size: 3vW;
+    font-size: 3vw;
   }
   .anio {
-    font-size: 2vW;
+    font-size: 2vw;
   }
   .footer {
     position: absolute;
     left: 0;
-    right: 0;
     bottom: 0;
-    width: 100%;
-    color: black;
-    text-align: center;
-    font-size: 2vw;
   }
   .block {
     padding-bottom: 5vw;
   }
   .letra {
-    font-size: 70%;
     margin: 0 auto;
   }
   .color {
@@ -241,14 +250,13 @@ thumb_up_alt
   .logo {
     display: flex;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 10vh;
   }
-  .valor{
+  .valor {
     display: inline;
-    float:right;
-    font-size: 2vW;
-    margin-top: 0.5vW
+    float: right;
+    font-size: 2vw;
+    margin-top: 0.5vw;
   }
-
 
 </style>
