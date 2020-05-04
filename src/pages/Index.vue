@@ -36,21 +36,21 @@
       <q-card v-if="arrayMostrar.length>0" class="tarjeta col-10 col-sm-5" v-for="(item, index) in arrayMostrar" :key="index">
         <img :src="'https://image.tmdb.org/t/p/original'+item.poster" class="poster" />
 
-        <q-card-section class="block">
-          <div class="titulo">{{item.titulo}}</div>
+        <q-card-section>
+
           <div>
+            <div class="titulo">{{item.titulo}}</div>
             <strong class="anio">{{item.anio}}</strong>
             <strong class="valor">
-                              <span class="material-icons">
-                                thumb_up_alt
-                              </span> {{item.popularidad}}
-                            </strong>
+                                  <span class="material-icons">
+                                    thumb_up_alt
+                                  </span> {{item.popularidad}}
+                                </strong>
           </div>
         </q-card-section>
-        <q-separator spaced inset vertical dark />
-
-        <div class="q-pa-md espaciador">
-          <q-btn-group spread absolute>
+        <div class="space"></div>
+        <div class="card-footer q-pa-md">
+          <q-btn-group spread>
             <q-btn push
                    type="a"
                    :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
@@ -201,7 +201,7 @@
 <style lang="scss" scoped>
 
   body {
-    margin: 0 0 0 0;
+    margin: 0;
   }
 
   .row > div {
@@ -221,18 +221,15 @@
     display: inline;
     margin: 0 auto;
     margin-top: 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
   }
   .titulo {
-    font-size: 3vw;
+    font-size: 2.6vw;
   }
   .anio {
     font-size: 2vw;
-  }
-  .block {
-    padding-bottom: 5vw;
-  }
-  .letra {
-    margin: 0 auto;
   }
   .color {
     background-color: green;
@@ -250,16 +247,8 @@
     display: inline;
     float: right;
     font-size: 2vw;
-    margin-top: 0.5vw;
   }
-  .espaciador {
-    min-width: 100%;
-    min-height: 6%;
-    bottom: 0;
-    position: absolute;
+  .space {
+    flex: 1;
   }
-  .q-btn-group {
-    margin-right: 1.3vW;
-  }
-
 </style>
