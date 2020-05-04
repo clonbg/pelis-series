@@ -48,38 +48,6 @@
           </div>
         </q-card-section>
         <q-separator spaced inset vertical dark />
-        <!-- <q-btn icon="img:https://cdn.quasar.dev/logo/svg/quasar-logo.svg" /> -->
-        <!-- <div class="full-width">
-                <q-btn push
-                       type="a"
-                       :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
-                       label="Castellano"
-                       icon="img:statics/icons/spain.png"
-                       target="_blank"
-                       stack/>
-                <q-btn push
-                       type="a"
-                       :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
-                       label="Inglés"
-                       icon="img:statics/icons/ingles.png"
-                       target="_blank"
-                       stack />
-                <q-btn push
-                       type="a"
-                       :href="'http://www.subswiki.com/search.php?search='+item.nombre_original.toLowerCase().split(' ').join('+')"
-                       label="Subtítulos"
-                       icon="subject"
-                       target="_blank"
-                       stack/>
-                <q-btn push
-                       type="a"
-                       :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
-                       label="Filmaffinity"
-                       icon="img:statics/icons/film.png"
-                       target="_blank"
-                       stack/>
-              </div> -->
-
         <div class="q-pa-md">
           <q-btn-group spread absolute>
             <q-btn push
@@ -92,27 +60,27 @@
                    stack />
             <q-btn push
                    type="a"
-                   :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
+                   :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
                    color="purple"
-                   label="SPA"
-                   icon="img:statics/icons/spain.png"
+                   label="ING"
+                   icon="img:statics/icons/ingles.png"
                    target="_blank"
                    stack />
 
             <q-btn push
                    type="a"
-                   :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
+                   :href="'http://www.subswiki.com/search.php?search='+item.nombre_original.toLowerCase().split(' ').join('+')"
                    color="purple"
-                   label="SPA"
-                   icon="img:statics/icons/spain.png"
+                   label="SUB"
+                   icon="subject"
                    target="_blank"
                    stack />
             <q-btn push
                    type="a"
-                   :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
+                   :href="'https://www.filmaffinity.com/es/search.php?stext='+item.titulo.toLowerCase().split(' ').join('+')"
                    color="purple"
-                   label="SPA"
-                   icon="img:statics/icons/spain.png"
+                   label="FILM"
+                   icon="img:statics/icons/film.png"
                    target="_blank"
                    stack />
           </q-btn-group>
