@@ -41,14 +41,15 @@
           <div>
             <strong class="anio">{{item.anio}}</strong>
             <strong class="valor">
-                            <span class="material-icons">
-                              thumb_up_alt
-                            </span> {{item.popularidad}}
-                          </strong>
+                              <span class="material-icons">
+                                thumb_up_alt
+                              </span> {{item.popularidad}}
+                            </strong>
           </div>
         </q-card-section>
         <q-separator spaced inset vertical dark />
-        <div class="q-pa-md">
+
+        <div class="q-pa-md espaciador">
           <q-btn-group spread absolute>
             <q-btn push
                    type="a"
@@ -250,6 +251,15 @@
     float: right;
     font-size: 2vw;
     margin-top: 0.5vw;
+  }
+  .espaciador {
+    min-width: 100%;
+    min-height: 6%;
+    bottom: 0;
+    position: absolute;
+  }
+  .q-btn-group {
+    margin-right: 1.3vW;
   }
 
 </style>
