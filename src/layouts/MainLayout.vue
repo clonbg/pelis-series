@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Pelis y series
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -30,7 +30,7 @@
           header
           class="text-grey-8"
         >
-          Essential Links
+          Enlaces
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -61,46 +61,40 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: [
         {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev'
+          title: 'Mejortorrent',
+          caption: 'Series y películas en castellano',
+          icon: 'img:http://www.mejortorrentt.net/imagenes_web/bicho1.jpg',
+          link: 'http://www.mejortorrentt.net/'
         },
         {
-          title: 'Github',
-          caption: 'github.com/quasarframework',
-          icon: 'code',
-          link: 'https://github.com/quasarframework'
+          title: 'Elitetorrent',
+          caption: 'Series y películas en castellano',
+          icon: 'img:statics/icons/elitetorrent.png',
+          link: 'https://www.elitetorrent.nl/'
         },
         {
-          title: 'Discord Chat Channel',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
+          title: 'Wsmmirror',
+          caption: 'Series y películas en inglés',
+          icon: 'img:statics/icons/wsmmirror.png',
+          link: 'https://wsmmirror.info/'
         },
         {
-          title: 'Forum',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
+          title: 'Eztv',
+          caption: 'Series en inglés',
+          icon: 'img:statics/icons/eztv.png',
+          link: 'https://eztv.io/'
         },
         {
-          title: 'Twitter',
-          caption: '@quasarframework',
-          icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
+          title: 'Subswiki',
+          caption: 'Subtítulos de series y películas',
+          icon: 'img:statics/icons/subswiki.png',
+          link: 'http://www.subswiki.com/'
         },
         {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
-        },
-        {
-          title: 'Quasar Awesome',
-          caption: 'Community Quasar projects',
-          icon: 'favorite',
-          link: 'https://awesome.quasar.dev'
+          title: 'Opensubtitles',
+          caption: 'Subtítulos de series y películas',
+          icon: 'img:statics/icons/opensubtitles.png',
+          link: 'https://www.opensubtitles.org/es'
         }
       ]
     }
