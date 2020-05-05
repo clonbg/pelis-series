@@ -54,35 +54,43 @@
             <q-btn push
                    type="a"
                    :href="'https://www.elitetorrent.nl/?s='+item.titulo.toLowerCase().split(' ').join('+')+'&x=0&y=0'"
-                   color="purple"
+                   color="white"
+                   text-color="black"
                    label="SPA"
                    icon="img:statics/icons/spain.png"
                    target="_blank"
+                   class="icon-footer"
                    stack />
             <q-btn push
                    type="a"
                    :href="'https://wsmmirror.info/Movies/'+item.nombre_original.toLowerCase().split(' ').join('-')+' '"
-                   color="purple"
+                   color="white"
+                   text-color="black"
                    label="ING"
                    icon="img:statics/icons/ingles.png"
                    target="_blank"
+                   class="icon-footer"
                    stack />
 
             <q-btn push
                    type="a"
                    :href="'http://www.subswiki.com/search.php?search='+item.nombre_original.toLowerCase().split(' ').join('+')"
-                   color="purple"
+                   color="white"
+                   text-color="black"
                    label="SUB"
                    icon="subject"
                    target="_blank"
+                   class="icon-footer"
                    stack />
             <q-btn push
                    type="a"
                    :href="'https://www.filmaffinity.com/es/search.php?stext='+item.titulo.toLowerCase().split(' ').join('+')"
-                   color="purple"
+                   color="white"
+                   text-color="black"
                    label="FILM"
                    icon="img:statics/icons/film.png"
                    target="_blank"
+                   class="icon-footer"
                    stack />
           </q-btn-group>
         </div>
@@ -220,7 +228,8 @@
   .tarjeta {
     display: inline;
     margin: 0 auto;
-    margin-top: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -250,5 +259,11 @@
   }
   .space {
     flex: 1;
+  }
+  .icon-footer{
+    margin-bottom: -3vH
+  }
+  .q-byn-group{
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0);
   }
 </style>
